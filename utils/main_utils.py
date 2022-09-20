@@ -5,7 +5,6 @@ import torch
 import random 
 import torch.backends.cudnn as cudnn
 
-
 def set_seed(seed):
     random.seed(seed)
     np.random.seed(seed)

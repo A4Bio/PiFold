@@ -64,46 +64,6 @@ class Exp:
     def _get_data(self):
         self.train_loader, self.valid_loader, self.test_loader = get_dataset(self.config)
 
-    def _save(self, name=''):
-        torch.save(self.method.model.state_dict(), osp.join(self.checkpoints_path, name + '.pth'))
-        fw = open(osp.join(self.checkpoints_path, name + '.pkl'), 'wb')
-        state = self.method.scheduler.state_dict()
-        pickle.dump(state, fw)
-
-    def _load(self, epoch):
-        self.method.model.load_state_dict(torch.load(osp.join(self.checkpoints_path, str(epoch) + '.pth')))
-        fw = open(osp.join(self.checkpoints_path, str(epoch) + '.pkl'), 'rb')
-        state = pickle.load(fw)
-        self.method.scheduler.load_state_dict(state)
-
-    def train(self):
-        recorder = Recorder(self.args.patience, verbose=True)
-        for epoch in range(self.args.epoch):
-            train_loss, train_perplexity = self.method.train_one_epoch(self.train_loader)
-
-            if epoch % self.args.log_step == 0:
-                with torch.no_grad():
-                    valid_loss, valid_perplexity = self.valid()
-
-                    self._save(name=str(epoch))
-                    self.test()
-                
-                print_log('Epoch: {0}, Steps: {1} | Train Loss: {2:.4f} Train Perp: {3:.4f} Valid Loss: {4:.4f} Valid Perp: {5:.4f}\n'.format(epoch + 1, len(self.train_loader), train_loss, train_perplexity, valid_loss, valid_perplexity))
-                recorder(valid_loss, self.method.model, self.path)
-                if recorder.early_stop:
-                    print("Early stopping")
-                    logging.info("Early stopping")
-                    break
-            
-        best_model_path = osp.join(self.path, 'checkpoint.pth')
-        self.method.model.load_state_dict(torch.load(best_model_path))
-
-    def valid(self):
-        valid_loss, valid_perplexity = self.method.valid_one_epoch(self.valid_loader)
-        print_log('Valid Perp: {0:.4f}'.format(valid_perplexity))
-        nni.report_intermediate_result(valid_perplexity)
-        return valid_loss, valid_perplexity
-
     def test(self):
         test_perplexity, test_recovery, test_subcat_recovery = self.method.test_one_epoch(self.test_loader)
         print_log('Test Perp: {0:.4f}, Test Rec: {1:.4f}\n'.format(test_perplexity, test_recovery))
@@ -120,18 +80,12 @@ if __name__ == '__main__':
 
     tuner_params = nni.get_next_parameter()
     config.update(tuner_params)
-    # default_params = load_config(osp.join('./configs', args.method + '.py' if args.config_file is None else args.config_file))
-    # config.update(default_params)
-    # config.update(tuner_params)
     print(config)
     
     svpath = '/gaozhangyang/experiments/ProDesign/results/ProDesign/'
-    # config.update(json.load(open(svpath+'model_param.json','r')))
     exp = Exp(args)
 
     exp.method.model.load_state_dict(torch.load(svpath+'checkpoint.pth'))
-    print('>>>>>>>>>>>>>>>>>>>>>>>>>> training <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
-    # exp.train()
     print('>>>>>>>>>>>>>>>>>>>>>>>>>> testing  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
     test_perp, test_rec = exp.test()
 
