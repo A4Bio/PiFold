@@ -3,7 +3,7 @@ import pickle
 import json
 import torch
 import os.path as osp
-from parser import create_parser
+
 
 import warnings
 warnings.filterwarnings('ignore')
@@ -72,6 +72,7 @@ class Exp:
 
 
 if __name__ == '__main__':
+    from parser import create_parser
     args = create_parser()
     config = args.__dict__
 
