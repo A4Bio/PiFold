@@ -1,6 +1,3 @@
-from email.policy import strict
-import nni
-
 import logging
 import pickle
 import json
@@ -78,8 +75,6 @@ if __name__ == '__main__':
     args = create_parser()
     config = args.__dict__
 
-    tuner_params = nni.get_next_parameter()
-    config.update(tuner_params)
     print(config)
     
     svpath = '/gaozhangyang/experiments/ProDesign/results/ProDesign/'
@@ -88,5 +83,3 @@ if __name__ == '__main__':
     exp.method.model.load_state_dict(torch.load(svpath+'checkpoint.pth'))
     print('>>>>>>>>>>>>>>>>>>>>>>>>>> testing  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
     test_perp, test_rec = exp.test()
-
-    nni.report_final_result(test_rec.item())
