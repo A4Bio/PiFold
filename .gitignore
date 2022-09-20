@@ -1,0 +1,12 @@
+__pycache__
+/data/af2db
+/data/cath
+/data/ts
+/data/gcndesign_dataset
+/results
+/mmseqs/*fasta
+/mmseqs/*UP*
+/mmseqs/tmp
+/tmp
+.vscode
+.ipynb_checkpoints
