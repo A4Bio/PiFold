@@ -49,17 +49,12 @@ class Exp:
             logging.root.removeHandler(handler)
         logging.basicConfig(level=logging.INFO, filename=osp.join(self.path, 'log.log'),
                             filemode='a', format='%(asctime)s - %(message)s')
-        # prepare data
-        self._get_data()
-        # build the method
         self._build_method()
 
     def _build_method(self):
-        steps_per_epoch = len(self.train_loader)
+        steps_per_epoch = 1000
         self.method = SimDesign(self.args, self.device, steps_per_epoch)
 
-    def _get_data(self):
-        self.train_loader, self.valid_loader, self.test_loader = get_dataset(self.config)
 
     def test(self):
         test_perplexity, test_recovery, test_subcat_recovery = self.method.test_one_epoch(self.test_loader)
