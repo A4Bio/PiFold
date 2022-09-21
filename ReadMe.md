@@ -9,12 +9,16 @@ How to design protein sequences folding into the desired structures effectively 
 
 
 ## 2. Benchmarking
-Reproduce results on CATH, TS50 and TS500: [[Colab]](https://colab.research.google.com/drive/1HgXQCbsoK09mcVZmPgIWlCczY64l0iIX?usp=sharing)
+Reproduce results on CATH, TS50 and TS500: 
+
+<a href="https://colab.research.google.com/drive/1HgXQCbsoK09mcVZmPgIWlCczY64l0iIX?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 
 
-## 3. Model Zoom
+<!-- ## 3. Model Zoom -->
 
-## 4. Design examples
+## 3. Design examples
 
-Design real proteins: [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing)
+Design real proteins: 
+<a href="https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
+<!-- [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing) -->
