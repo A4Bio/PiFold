@@ -20,7 +20,7 @@ def create_parser():
     parser.add_argument('--num_workers', default=8, type=int)
 
     # method parameters
-    parser.add_argument('--method', default='SimDesign', choices=['SimDesign'])
+    parser.add_argument('--method', default='ProDesign', choices=['ProDesign'])
     parser.add_argument('--config_file', '-c', default=None, type=str)
     parser.add_argument('--hidden_dim',  default=128, type=int)
     parser.add_argument('--node_features',  default=128, type=int)
