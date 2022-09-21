@@ -7,9 +7,26 @@ How to design protein sequences folding into the desired structures effectively 
   <img src='./assets/acc_speed.png' width="600">
 </p>
 
+## 2. Framework
+We show the overall ProDesign framework. The inputs are protein structures, and outputs are protein sequences expected to fold into the input structures. We propose a novel residue featurizer and ProGNN layer to learn expressive residue representations. Specifically, the residue featurizer constructs comprehensive residue features and creates learnable virtual atoms to capture information complementary to real atoms. The ProGNN 
+considers multi-scale residue interactions in node, edge, and global context levels. ProDesign could generate protein sequences in a one-shot manner with a higher recovery than previous autoregressive  or iterative models.
 
-## 2. Benchmarking
-Reproducible results on CATH, TS50 and TS500: 
+<p align="center">
+  <img src='./assets/framework.png' width="600">
+</p>
+
+## 3. Benchmarking
+We comprehensively evaluate different results on CATH, TS50 and TS500. 
+
+<p align="center">
+  <img src='./assets/results_CATH.png' width="600">
+</p>
+
+<p align="center">
+  <img src='./assets/results_TS.png' width="600">
+</p>
+
+You can reproduce results of ProDesign on colab:
 
 <a href="https://colab.research.google.com/drive/1HgXQCbsoK09mcVZmPgIWlCczY64l0iIX?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
@@ -17,9 +34,14 @@ Reproducible results on CATH, TS50 and TS500:
 
 <!-- ## 3. Model Zoom -->
 
-## 3. Design examples
+## 4. Design examples
 
-Design real proteins from pdb: 
+Design real proteins from structures recorded in pdb files: 
 
 <a href="https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <!-- [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing) -->
+
+## Feedback
+If you have any issue about this work, please feel free to contact me by email: 
+* Zhangyang Gao: gaozhangyang@westlake.edu.cn
+* Cheng Tan: tancheng@westlake.edu.cn
