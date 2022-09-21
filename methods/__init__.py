@@ -1,1 +1,1 @@
-from .simdesign import SimDesign
+from .prodesign import ProDesign

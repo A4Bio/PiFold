@@ -2,12 +2,12 @@ import time
 import torch
 import torch.nn as nn
 from utils import gather_nodes, _dihedrals, _get_rbf, _orientations_coarse_gl_tuple
-from .simdesign_module import *
+from .prodesign_module import *
 
-class SimDesign_Model(nn.Module):
+class ProDesign_Model(nn.Module):
     def __init__(self, args, **kwargs):
         """ Graph labeling network """
-        super(SimDesign_Model, self).__init__()
+        super(ProDesign_Model, self).__init__()
         self.args = args
         node_features = args.node_features
         edge_features = args.edge_features

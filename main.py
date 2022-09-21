@@ -8,7 +8,7 @@ import os.path as osp
 import warnings
 warnings.filterwarnings('ignore')
 
-from methods import SimDesign
+from methods import ProDesign
 from API import Recorder
 from utils import *
 
@@ -53,7 +53,7 @@ class Exp:
 
     def _build_method(self):
         steps_per_epoch = 1000
-        self.method = SimDesign(self.args, self.device, steps_per_epoch)
+        self.method = ProDesign(self.args, self.device, steps_per_epoch)
 
 
     def test(self):
