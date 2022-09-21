@@ -17,3 +17,4 @@ Reproduce results on CATH, TS50 and TS500: [[Colab]](https://colab.research.goog
 
 ## 4. Design examples
 
+Design real proteins: [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q#scrollTo=HrEgr33Ktzhs)
