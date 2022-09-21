@@ -5,7 +5,7 @@ from utils import gather_nodes, _dihedrals, _get_rbf, _orientations_coarse_gl_tu
 from .prodesign_module import *
 
 class ProDesign_Model(nn.Module):
-    def __init__(self, args, **kwargs):
+    def __init__(self, args,  **kwargs):
         """ Graph labeling network """
         super(ProDesign_Model, self).__init__()
         self.args = args
@@ -76,7 +76,7 @@ class ProDesign_Model(nn.Module):
         self.encode_t = 0
         self.decode_t = 0
     
-    def forward(self, h_V, h_P, P_idx, batch_id, S=None, AT_test = False, mask_bw = None, mask_fw = None, decoding_order= None):
+    def forward(self, h_V, h_P, P_idx, batch_id, S=None, AT_test = False, mask_bw = None, mask_fw = None, decoding_order= None, return_logit=False):
         t1 = time.time()
         h_V = self.W_v(self.norm_nodes(self.node_embedding(h_V)))
         h_P = self.W_e(self.norm_edges(self.edge_embedding(h_P)))
@@ -87,9 +87,13 @@ class ProDesign_Model(nn.Module):
         log_probs, logits = self.decoder(h_V, batch_id)
                 
         t3 = time.time()
+        
 
         self.encode_t += t2-t1
         self.decode_t += t3-t2
+
+        if return_logit == True:
+            return log_probs, logits
         return log_probs
         
     def _init_params(self):

@@ -9,8 +9,11 @@ How to design protein sequences folding into the desired structures effectively 
 
 
 ## 2. Benchmarking
+Reproduce results on CATH, TS50 and TS500: [[Colab]](https://colab.research.google.com/drive/1HgXQCbsoK09mcVZmPgIWlCczY64l0iIX#scrollTo=ZHmVtYkqEPOr)
+
+
 
 ## 3. Model Zoom
 
-## 4. Colab
+## 4. Design examples
 
