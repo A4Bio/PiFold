@@ -6,6 +6,7 @@ import torch
 from .base_method import Base_method
 from .utils import cuda
 from .prodesign_model import ProDesign_Model
+from torch_scatter import scatter_sum
 
 class ProDesign(Base_method):
     def __init__(self, args, device, steps_per_epoch):
@@ -41,6 +42,8 @@ class ProDesign(Base_method):
         return test_perplexity, test_recovery, test_subcat_recovery
 
     def _cal_recovery(self, dataset, featurizer):
+        self.residue_type_cmp = torch.zeros(20, device='cuda:0')
+        self.residue_type_num = torch.zeros(20, device='cuda:0')
         recovery = []
         subcat_recovery = {}
         with torch.no_grad():
@@ -56,6 +59,9 @@ class ProDesign(Base_method):
                 S_pred = torch.argmax(log_probs, dim=1)
                 cmp = (S_pred == S)
                 recovery_ = cmp.float().mean().cpu().numpy()
+
+                self.residue_type_cmp += scatter_sum(cmp.float(), S.long(), dim=0, dim_size=20)
+                self.residue_type_num += scatter_sum(torch.ones_like(cmp), S.long(), dim=0, dim_size=20)
 
                 if np.isnan(recovery_): recovery_ = 0.0
 
