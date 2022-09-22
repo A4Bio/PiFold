@@ -61,7 +61,7 @@ class ProDesign(Base_method):
                 recovery_ = cmp.float().mean().cpu().numpy()
 
                 self.residue_type_cmp += scatter_sum(cmp.float(), S.long(), dim=0, dim_size=20)
-                self.residue_type_num += scatter_sum(torch.ones_like(cmp), S.long(), dim=0, dim_size=20)
+                self.residue_type_num += scatter_sum(torch.ones_like(cmp.float()), S.long(), dim=0, dim_size=20)
 
                 if np.isnan(recovery_): recovery_ = 0.0
 
