@@ -18,13 +18,15 @@ class ProDesign_Model(nn.Module):
         self.num_rbf = 16
         self.num_positional_embeddings = 16
 
-        prior_matrix = [
-            [-0.58273431, 0.56802827, -0.54067466],
-            [0.0       ,  0.83867057, -0.54463904],
-            [0.01984028, -0.78380804, -0.54183614],
-        ]
+        # prior_matrix = [
+        #     [-0.58273431, 0.56802827, -0.54067466],
+        #     [0.0       ,  0.83867057, -0.54463904],
+        #     [0.01984028, -0.78380804, -0.54183614],
+        # ]
 
-        self.virtual_atoms = nn.Parameter(torch.tensor(prior_matrix)[:self.args.virtual_num,:])
+        # self.virtual_atoms = nn.Parameter(torch.tensor(prior_matrix)[:self.args.virtual_num,:])
+
+        self.virtual_atoms = nn.Parameter(torch.rand(self.args.virtual_num,3))
 
         node_in = 0
         if self.args.node_dist:
