@@ -36,9 +36,9 @@ You can reproduce results of ProDesign on colab:
 
 <!-- ## 3. Model Zoom -->
 
-## 4. Design examples
+## 4. Fixed backbone design using model trained on CATH 4.2.
+For a given protein backbone design a new sequence that folds into that conformation: 
 
-Design real proteins from structures recorded in pdb files: 
 
 <a href="https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <!-- [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing) -->
