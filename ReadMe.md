@@ -2,7 +2,7 @@
 
 The pre-print paper is available at [this link](https://github.com/A4Bio/ProDesign/blob/main/assets/PiFold_arxiv.pdf).
 
-Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work
+Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work.
 
 
 
