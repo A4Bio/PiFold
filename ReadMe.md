@@ -1,6 +1,6 @@
 # PiFold: Toward effective and efficient protein inverse folding
 
-[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)![GitHub stars](https://img.shields.io/github/stars/A4Bio/PiFold)  ![GitHub forks](https://img.shields.io/github/forks/A4Bio/PiFold?color=green) <!-- ![visitors](https://visitor-badge.glitch.me/badge?page_id=A4Bio.PiFold) -->
+![GitHub stars](https://img.shields.io/github/stars/A4Bio/PiFold)  ![GitHub forks](https://img.shields.io/github/forks/A4Bio/PiFold?color=green) <!-- ![visitors](https://visitor-badge.glitch.me/badge?page_id=A4Bio.PiFold) -->
 
 The pre-print paper is available at [this link](https://github.com/A4Bio/ProDesign/blob/main/assets/PiFold_arxiv.pdf).
 
