@@ -1,5 +1,7 @@
 # PiFold: Toward effective and efficient protein inverse folding
 
+[![Awesome](https://awesome.re/badge.svg)](https://awesome.re)![GitHub stars](https://img.shields.io/github/stars/A4Bio/PiFold)  ![GitHub forks](https://img.shields.io/github/forks/A4Bio/PiFold?color=green) <!-- ![visitors](https://visitor-badge.glitch.me/badge?page_id=A4Bio.PiFold) -->
+
 The pre-print paper is available at [this link](https://github.com/A4Bio/ProDesign/blob/main/assets/PiFold_arxiv.pdf).
 
 Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work.
@@ -25,7 +27,7 @@ considers multi-scale residue interactions in node, edge, and global context lev
 We comprehensively evaluate different results on CATH, TS50 and TS500. 
 
 <p align="center">
-  <img src='./assets/results_CATH.png' width="600">
+  <img src='./assets/results_CATH2.png' width="600">
 </p>
 
 <p align="center">
