@@ -2,7 +2,8 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/A4Bio/PiFold)  ![GitHub forks](https://img.shields.io/github/forks/A4Bio/PiFold?color=green) <!-- ![visitors](https://visitor-badge.glitch.me/badge?page_id=A4Bio.PiFold) -->
 
-The pre-print paper is available at [this link](https://github.com/A4Bio/ProDesign/blob/main/assets/PiFold_arxiv.pdf).
+**PiFold: Toward effective and efficient protein inverse folding**  
+[Zhangyang Gao](https://westlake-drug-discovery.github.io/zhangyang_gao.html), [Cheng Tan](https://chengtan9907.github.io/), [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl). In [ICLR](https://openreview.net/forum?id=oMsN9TYwJ0j), 2023.
 
 Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work.
 
@@ -48,6 +49,19 @@ For a given protein backbone design a new sequence that folds into that conforma
 
 <a href="https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 <!-- [[Colab]](https://colab.research.google.com/drive/1z6vpKA5L1iAmBLfREbmy8VNOtDYlkY4Q?usp=sharing) -->
+
+## Citation
+
+If you are interested in our repository and our paper, please cite the following paper:
+
+```
+@article{gao2022pifold,
+  title={PiFold: Toward effective and efficient protein inverse folding},
+  author={Gao, Zhangyang and Tan, Cheng and Li, Stan Z},
+  journal={arXiv preprint arXiv:2209.12643},
+  year={2022}
+}
+```
 
 ## Feedback
 If you have any issue about this work, please feel free to contact me by email: 
