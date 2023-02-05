@@ -55,6 +55,14 @@ For a given protein backbone design a new sequence that folds into that conforma
 If you are interested in our repository and our paper, please cite the following paper:
 
 ```
+@inproceedings{
+  gao2023pifold,
+  title={PiFold: Toward effective and efficient protein inverse folding},
+  author={Zhangyang Gao and Cheng Tan and Stan Z. Li},
+  booktitle={International Conference on Learning Representations},
+  year={2023},
+  url={https://openreview.net/forum?id=oMsN9TYwJ0j}
+}
 @article{gao2022pifold,
   title={PiFold: Toward effective and efficient protein inverse folding},
   author={Gao, Zhangyang and Tan, Cheng and Li, Stan Z},
