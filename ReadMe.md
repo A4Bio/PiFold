@@ -2,7 +2,7 @@
 
 ![GitHub stars](https://img.shields.io/github/stars/A4Bio/PiFold)  ![GitHub forks](https://img.shields.io/github/forks/A4Bio/PiFold?color=green) <!-- ![visitors](https://visitor-badge.glitch.me/badge?page_id=A4Bio.PiFold) -->
 
-**PiFold: Toward effective and efficient protein inverse folding**  
+**PiFold: Toward effective and efficient protein inverse folding (Spotlight)**  
 [Zhangyang Gao](https://westlake-drug-discovery.github.io/zhangyang_gao.html), [Cheng Tan](https://chengtan9907.github.io/), [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl). In [ICLR](https://openreview.net/forum?id=oMsN9TYwJ0j), 2023.
 
 Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work.
