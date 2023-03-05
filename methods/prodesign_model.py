@@ -189,8 +189,6 @@ class ProDesign_Model(nn.Module):
 
         pair_lst = ['Ca-Ca', 'Ca-C', 'C-Ca', 'Ca-N', 'N-Ca', 'Ca-O', 'O-Ca', 'C-C', 'C-N', 'N-C', 'C-O', 'O-C', 'N-N', 'N-O', 'O-N', 'O-O']
 
-
-        
         edge_dist = [] #Ca-Ca
         for pair in pair_lst:
             atom1, atom2 = pair.split('-')

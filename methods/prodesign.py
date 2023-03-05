@@ -18,6 +18,53 @@ class ProDesign(Base_method):
     def _build_model(self):
         return ProDesign_Model(self.args).to(self.device)
 
+  
+    
+    def train_one_epoch(self, train_loader):
+        self.model.train()
+        train_sum, train_weights = 0., 0.
+
+        train_pbar = tqdm(train_loader)
+        for step_idx, batch in enumerate(train_pbar):
+            self.optimizer.zero_grad()
+            X, S, score, mask, lengths = cuda(batch, device = self.device)
+            X, S, score, h_V, h_E, E_idx, batch_id, mask_bw, mask_fw, decoding_order = self.model._get_features(S, score, X=X, mask=mask)
+            log_probs = self.model(h_V, h_E, E_idx, batch_id)
+            loss = self.criterion(log_probs, S)
+            loss.backward()
+            torch.nn.utils.clip_grad_norm_(self.model.parameters(), 1)
+            self.optimizer.step()
+            self.scheduler.step()
+
+            train_sum += torch.sum(loss * mask).cpu().data.numpy()
+            train_weights += torch.sum(mask).cpu().data.numpy()
+            train_pbar.set_description('train loss: {:.4f}'.format(loss.item()))
+            
+        train_loss = train_sum / train_weights
+        train_perplexity = np.exp(train_loss)
+        return train_loss, train_perplexity
+    
+    def valid_one_epoch(self, valid_loader):
+        self.model.eval()
+        valid_sum, valid_weights = 0., 0.
+        valid_pbar = tqdm(valid_loader)
+
+        with torch.no_grad():
+            for batch in valid_pbar:
+                X, S, score, mask, lengths = cuda(batch, device = self.device)
+                X, S, score, h_V, h_E, E_idx, batch_id, mask_bw, mask_fw, decoding_order = self.model._get_features(S, score, X=X, mask=mask)
+                log_probs = self.model(h_V, h_E, E_idx, batch_id)
+                loss = self.criterion(log_probs, S)
+            
+                valid_sum += torch.sum(loss * mask).cpu().data.numpy()
+                valid_weights += torch.sum(mask).cpu().data.numpy()
+
+                valid_pbar.set_description('valid loss: {:.4f}'.format(loss.mean().item()))
+                
+            valid_loss = valid_sum / valid_weights
+            valid_perplexity = np.exp(valid_loss)
+        return valid_loss, valid_perplexity
+
     def test_one_epoch(self, test_loader):
         self.model.eval()
         test_sum, test_weights = 0., 0.

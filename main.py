@@ -49,6 +49,8 @@ class Exp:
             logging.root.removeHandler(handler)
         logging.basicConfig(level=logging.INFO, filename=osp.join(self.path, 'log.log'),
                             filemode='a', format='%(asctime)s - %(message)s')
+        
+        self._get_data()
         self._build_method()
 
     def _build_method(self):
@@ -56,6 +58,38 @@ class Exp:
         if self.args.method == 'ProDesign':
             self.method = ProDesign(self.args, self.device, steps_per_epoch)
 
+    def _get_data(self):
+        self.train_loader, self.valid_loader, self.test_loader = get_dataset(self.config)
+    
+    def train(self):
+        recorder = Recorder(self.args.patience, verbose=True)
+        for epoch in range(self.args.epoch):
+            train_loss, train_perplexity = self.method.train_one_epoch(self.train_loader)
+
+            if epoch % self.args.log_step == 0:
+                with torch.no_grad():
+                    valid_loss, valid_perplexity = self.valid()
+
+                    # self._save(name=str(epoch))
+                    self.test()
+                
+                print_log('Epoch: {0}, Steps: {1} | Train Loss: {2:.4f} Train Perp: {3:.4f} Valid Loss: {4:.4f} Valid Perp: {5:.4f}\n'.format(epoch + 1, len(self.train_loader), train_loss, train_perplexity, valid_loss, valid_perplexity))
+            
+                recorder(valid_loss, self.method.model, self.path)
+                if recorder.early_stop:
+                    print("Early stopping")
+                    logging.info("Early stopping")
+                    break
+            
+        best_model_path = osp.join(self.path, 'checkpoint.pth')
+        self.method.model.load_state_dict(torch.load(best_model_path))
+        
+    def valid(self):
+        valid_loss, valid_perplexity = self.method.valid_one_epoch(self.valid_loader)
+
+        print_log('Valid Perp: {0:.4f}'.format(valid_perplexity))
+        
+        return valid_loss, valid_perplexity
 
     def test(self):
         test_perplexity, test_recovery, test_subcat_recovery = self.method.test_one_epoch(self.test_loader)
@@ -74,9 +108,15 @@ if __name__ == '__main__':
 
     print(config)
     
-    svpath = '/gaozhangyang/experiments/ProDesign/results/ProDesign/'
+    
+    
     exp = Exp(args)
-
-    exp.method.model.load_state_dict(torch.load(svpath+'checkpoint.pth'))
+    
+    # svpath = '/gaozhangyang/experiments/ProDesign/results/ProDesign/'
+    # exp.method.model.load_state_dict(torch.load(svpath+'checkpoint.pth'))
+    
+    print('>>>>>>>>>>>>>>>>>>>>>>>>>> training <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
+    exp.train()
+    
     print('>>>>>>>>>>>>>>>>>>>>>>>>>> testing  <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<')
     test_perp, test_rec = exp.test()

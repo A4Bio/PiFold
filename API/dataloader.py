@@ -18,10 +18,9 @@ def load_data(data_name, method, batch_size, data_root, num_workers=8, **kwargs)
             test_set = TS(osp.join(data_root, 'ts'))
         collate_fn = featurize_GTrans
 
-    if method in ['SimDesign']:
-        train_loader = DataLoader_GTrans(train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers, collate_fn=collate_fn)
-        valid_loader = DataLoader_GTrans(valid_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
-        test_loader = DataLoader_GTrans(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
+    train_loader = DataLoader_GTrans(train_set, batch_size=batch_size, shuffle=True, num_workers=num_workers, collate_fn=collate_fn)
+    valid_loader = DataLoader_GTrans(valid_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
+    test_loader = DataLoader_GTrans(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
     
     return train_loader, valid_loader, test_loader
 
@@ -29,8 +28,8 @@ def load_data(data_name, method, batch_size, data_root, num_workers=8, **kwargs)
 
 def make_cath_loader(test_set, method, batch_size, max_nodes=3000, num_workers=8):
 
-    if method in ['SimDesign']:
-        collate_fn = featurize_GTrans
-        test_loader = DataLoader_GTrans(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
+
+    collate_fn = featurize_GTrans
+    test_loader = DataLoader_GTrans(test_set, batch_size=batch_size, shuffle=False, num_workers=num_workers, collate_fn=collate_fn)
         
     return test_loader
