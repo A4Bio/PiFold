@@ -5,7 +5,7 @@
 **PiFold: Toward effective and efficient protein inverse folding (Spotlight)**  
 [Zhangyang Gao](https://westlake-drug-discovery.github.io/zhangyang_gao.html), [Cheng Tan](https://chengtan9907.github.io/), [Stan Z. Li](https://scholar.google.com/citations?user=Y-nyLGIAAAAJ&hl). In [ICLR](https://openreview.net/forum?id=oMsN9TYwJ0j), 2023.
 
-Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work.
+Note that we renamed **ProDesign** to **PiFold** to avoid naming conflicts with previous work. Our new method [knowledge-design](https://arxiv.org/abs/2305.15151) outperforms PiFold about 9%, the code will be released soon.
 
 
 
